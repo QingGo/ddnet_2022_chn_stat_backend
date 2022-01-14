@@ -18,6 +18,7 @@ func main() {
 	}
 	db.Init(csvFilePath)
 	router := gin.Default()
+	router.UseRawPath = true
 	router.GET("/user/:name", func(c *gin.Context) {
 		name := c.Param("name")
 		c.JSON(http.StatusOK, db.Find(name))
